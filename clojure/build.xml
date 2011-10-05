@@ -1,0 +1,23 @@
+<project name="TuringMachine" default='test' basedir='.'>
+	<property name='src-dir' value='${basedir}/src' />
+	<property name='test-dir' value='${basedir}/test' />
+	<property name='extLibs.dir' value='${basedir}/lib' />
+	
+	<target name="test" depends="">
+	  <java classname="clojure.main" 
+	        fork="true" failonerror="true">  
+	    <classpath>
+	      <pathelement path="${test-dir}" />
+	      <pathelement path="${src-dir}" />
+	      <pathelement location="${extLibs.dir}/clojure-1.2.1.jar"/>
+	      <pathelement location="${extLibs.dir}/clojure-contrib-1.2.0.jar"/>
+	    </classpath>
+
+	    <arg value="-e" />
+	    <arg value="
+	                (use 'clojure.test)
+	                (use 'app-test)
+	                (run-ant)" />
+	  </java>  
+	</target>
+</project>
