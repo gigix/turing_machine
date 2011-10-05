@@ -15,5 +15,5 @@
 (deftest should_change_content_of_sqare_on_tape
 	(def my_tape (create_tape))
 	(write my_tape 0 "x")
-	(is (= '("x") (first my_tape)))
+	(is (= "x" (first my_tape)))
 )
