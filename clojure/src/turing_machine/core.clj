@@ -11,7 +11,6 @@
 )
 
 (defn create_tape
-	"Build a blank tape on which a Turing machine can operate"
 	[]
 	; TODO: this tape is not infinite...
 	(struct Tape (repeat 65535 ""))
