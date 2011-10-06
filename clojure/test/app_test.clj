@@ -1,8 +1,12 @@
 (ns app-test
 	(:use [clojure.test]))
 
-(def test-names
-     [:turing_machine.canary_test :turing_machine.core_test])
+(def test-names [
+	:turing_machine.canary_test 
+	:turing_machine.core_test 
+	:turing_machine.tape_test
+	:turing_machine.m_config_test
+])
 
 (def test-namespaces
      (map #(symbol (str (name %)))
