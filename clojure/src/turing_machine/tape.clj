@@ -41,16 +41,8 @@
 	(struct Tape (write_square_in_seq (:squares tape) [] location content))
 )
 
-(defn read_square_in_seq
-	[squares location]
-	(if (= 0 location) 
-		(first squares)
-		(read_square_in_seq (rest squares) (- location 1))
-	)
-)
-
 (defn read_square
 	"Read content of a square on tape"
 	[tape location]
-	(read_square_in_seq (:squares tape) location)
+	(last (take (+ location 1) (:squares tape)))
 )
