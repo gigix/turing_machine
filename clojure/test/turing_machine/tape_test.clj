@@ -4,6 +4,8 @@
 
 (deftest should_create_blank_tape
 	(def tape (create_tape))
+	(is (= "" (read_square tape 0)))
+	(is (= "" (read_square tape 1)))
 )
 
 (deftest should_change_content_of_sqare_on_tape

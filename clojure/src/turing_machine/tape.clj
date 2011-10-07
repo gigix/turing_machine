@@ -2,6 +2,24 @@
 
 (defstruct Tape :squares)
 
+(defn print_squares
+	[squares]
+	(print " | ")
+	(if (empty? (first squares))
+		(print " ")
+		(print (first squares))
+	)
+	(if (not (empty? (rest squares)))
+		(print_squares (rest squares))
+	)
+)
+
+(defn print_tape
+	[tape length]
+	(println)
+	(print_squares (take length (:squares tape)))
+)
+
 (defn create_tape
 	"Build a blank tape on which a Turing machine can operate"
 	[]
