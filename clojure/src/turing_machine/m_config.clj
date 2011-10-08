@@ -1,10 +1,10 @@
 (ns turing_machine.m_config)
 
-(defstruct MConfig :status :read_content :write_content :move :next_status)
+(defstruct MConfig :status :read_symbol :operations :write_content :move :next_status)
 
 (defn create_m_config
-	[status read_content write_content move next_status]
-	(struct MConfig status read_content write_content move next_status)
+	[status read_symbol operations write_content move next_status]
+	(struct MConfig status read_symbol operations write_content move next_status)
 )
 
 (defn find_m_config
@@ -12,7 +12,7 @@
 	(first
 		(filter
 			(fn [m_config] 
-				(and (= status (:status m_config)) (= current_square_content (:read_content m_config)))
+				(and (= status (:status m_config)) (= current_square_content (:read_symbol m_config)))
 			)
 			m_configs
 		)

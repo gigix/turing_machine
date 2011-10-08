@@ -25,6 +25,7 @@
 
 (defn actual_single_step
 	[machine tape current_cursor m_config_to_execute]
+	;TODO: execute with :operations instead of :write_content and :move
 	(def tape_after_step (write_square tape current_cursor (:write_content m_config_to_execute)))
 
 	(def cursor_after_step
