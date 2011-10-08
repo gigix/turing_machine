@@ -16,14 +16,15 @@
 	(create_machine_internal m_configs 0 (first m_configs))
 )
 
-(defn execute_single_step
-	"Execute Turing machine one step"
+(defstruct CompleteConfig :machine :tape)
+
+(defn create_complete_config
 	[machine tape]
-	(def current_m_config (:current_m_config machine))
-	(def current_cursor (:cursor machine))
-	(def current_square_content (read_square tape (:cursor machine)))
-	(def m_config_to_execute (find_m_config (:m_configs machine) (:status current_m_config) current_square_content))
-	
+	(struct CompleteConfig machine tape)
+)
+
+(defn actual_single_step
+	[machine tape current_cursor m_config_to_execute]
 	(def tape_after_step (write_square tape current_cursor (:write_content m_config_to_execute)))
 
 	(def cursor_after_step
@@ -38,5 +39,34 @@
 	
 	(def m_config_after_step (find_m_config_by_status (:m_configs machine) (:next_status m_config_to_execute)))
 
-	[(create_machine_internal (:m_configs machine) cursor_after_step m_config_after_step) tape_after_step]
+	(create_complete_config
+		(create_machine_internal (:m_configs machine) cursor_after_step m_config_after_step)
+		tape_after_step)
+)
+
+(defn execute_single_step
+	"Execute Turing machine one step"
+	[machine tape]
+	(def current_m_config (:current_m_config machine))
+	(def current_cursor (:cursor machine))
+	(def current_square_content (read_square tape (:cursor machine)))
+	(def m_config_to_execute (find_m_config (:m_configs machine) (:status current_m_config) current_square_content))
+	
+	(if (= nil m_config_to_execute)
+		;TODO: it's not really halt immediately...
+		(create_complete_config machine tape)
+		(actual_single_step machine tape current_cursor m_config_to_execute)
+	)
+)
+
+(defn execute
+	"Execute Turing machine given steps"
+	[machine tape steps]
+	(if (= steps 0)
+		(create_complete_config machine tape)
+		(and 
+			(def complete_config (execute_single_step machine tape))
+			(execute (:machine complete_config) (:tape complete_config) (- steps 1))
+		)
+	)
 )
