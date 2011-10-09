@@ -50,8 +50,8 @@
 )
 
 (deftest should_halt_when_error_happens_in_m_config
-	(def m_config_1 (create_m_config "config-1" "" "P0,R" "0" "R" "config-2"))
-	(def m_config_2 (create_m_config "config-2" "" "P1,R" "1" "R" "config-3"))
+	(def m_config_1 (create_m_config "config-1" "" "P0,R" "config-2"))
+	(def m_config_2 (create_m_config "config-2" "" "P1,R" "config-3"))
 	(def m_configs [m_config_1 m_config_2])
 	(def machine (create_machine m_configs))
 	(def initial_tape (create_tape))

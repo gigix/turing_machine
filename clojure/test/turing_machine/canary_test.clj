@@ -15,3 +15,8 @@
 	(is (= "R" (first (rest operations))))
 	(is (= "R" (last operations)))
 )
+
+(deftest get_first_char_sample
+	(def string "P0")
+	(is (= "P" (str (first string))))
+)

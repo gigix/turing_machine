@@ -7,8 +7,7 @@
 	(def config (first (:m_configs (:machine (test_machine_complete_config)))))
 	(is (= "config-1" (:status config)))
 	(is (= "" (:read_symbol config)))
-	(is (= "0" (:write_content config)))
-	(is (= "R" (:move config)))
+	(is (= "P0, R" (:operations config)))
 	(is (= "config-2" (:next_status config)))
 )
 
