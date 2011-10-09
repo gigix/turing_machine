@@ -3,7 +3,8 @@
   (:use [turing_machine.core])
   (:use [turing_machine.tape])
   (:use [turing_machine.m_config])
-  (:use [clojure.test]))
+  (:use [clojure.test])
+)
 
 (deftest should_create_machine_with_configurations
 	(def machine (:machine test_machine_complete_config))
@@ -63,4 +64,25 @@
 	(is (= "1" (read_square tape_after_execute 1)))
 	(is (= "" (read_square tape_after_execute 2)))
 	(is (= "" (read_square tape_after_execute 3)))
+)
+
+(deftest should_write_a_serial_of_characters_with_one_config
+	(def begin_config (create_m_config "b" "" "Pe, R, Pe, R, P0, R, R, P0, L, L" "o"))
+	(def m_configs [begin_config])
+	(def machine (create_machine m_configs))
+	(def initial_tape (create_tape))
+	
+	(def complete_config_after_execute (execute machine initial_tape 5))
+	(is (= 2 (:cursor (:machine complete_config_after_execute))))
+	
+	(def tape_after_execute (:tape complete_config_after_execute))
+	(is (= "e" (read_square tape_after_execute 0)))
+	(is (= "e" (read_square tape_after_execute 1)))
+	(is (= "0" (read_square tape_after_execute 2)))
+	(is (= "" (read_square tape_after_execute 3)))
+	(is (= "0" (read_square tape_after_execute 4)))
+	(is (= "" (read_square tape_after_execute 5)))
+	(is (= "" (read_square tape_after_execute 6)))
+	
+	(print_tape tape_after_execute 10)
 )

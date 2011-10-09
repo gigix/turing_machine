@@ -6,6 +6,7 @@
 	:turing_machine.core_test 
 	:turing_machine.tape_test
 	:turing_machine.m_config_test
+	:turing_machine.loader_test
 ])
 
 (def test-namespaces
