@@ -1,6 +1,7 @@
 (ns turing_machine.core
 	(:use [turing_machine.tape])
 	(:use [turing_machine.m_config])
+	(:use [clojure.string])
 )
 
 (defstruct Machine :m_configs :cursor :current_m_config)

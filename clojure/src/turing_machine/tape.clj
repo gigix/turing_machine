@@ -2,22 +2,15 @@
 
 (defstruct Tape :squares)
 
-(defn print_squares
+(defn pad_squares
 	[squares]
-	(print " | ")
-	(if (empty? (first squares))
-		(print " ")
-		(print (first squares))
-	)
-	(if (not (empty? (rest squares)))
-		(print_squares (rest squares))
-	)
+	(map #(if (empty? %) " " %) squares)
 )
 
 (defn print_tape
 	[tape length]
 	(println)
-	(print_squares (take length (:squares tape)))
+	(println (interpose " | " (pad_squares (take length (:squares tape)))))
 )
 
 (defn create_tape
