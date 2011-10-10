@@ -10,7 +10,7 @@
 (defn print_tape
 	[tape length]
 	(println)
-	(println (interpose " | " (pad_squares (take length (:squares tape)))))
+	(println (interpose "|" (pad_squares (take length (:squares tape)))))
 )
 
 (defn create_tape

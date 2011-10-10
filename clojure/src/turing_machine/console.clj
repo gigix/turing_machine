@@ -11,7 +11,7 @@
 	(def machine (load_machine file_path))
 	(def initial_tape (create_tape))
 
-	(def complete_config_after_execute (execute machine initial_tape 5))
+	(def complete_config_after_execute (execute machine initial_tape 10))
 	(print_tape (:tape complete_config_after_execute) 10)
 )
 
