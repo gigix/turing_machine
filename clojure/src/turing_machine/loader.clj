@@ -20,6 +20,16 @@
 	[file_path]
 	(def file_content (slurp file_path))
 	(def rows (#'clojure.string/split file_content #"\n"))
-	(def m_configs (map #(to_m_config %) rows))
+	(def useful_rows 
+		(filter 
+			(fn [raw_row] 
+				(def row (#'clojure.string/trim raw_row))
+				(and (not (empty? row)) (not (= ";" (str (first row)))))
+			)
+			rows
+		)
+	)
+
+	(def m_configs (map #(to_m_config %) useful_rows))
 	(create_machine m_configs)
 )

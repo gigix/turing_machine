@@ -86,3 +86,43 @@
 	
 	(print_tape tape_after_execute 10)
 )
+
+(deftest should_errase_character_from_tape
+	(def begin_config (create_m_config "b" "" "Pe, R, Pe, R, P0, R, R, P0, L, L" "o"))
+	(def errase_config (create_m_config "o" "0" "E" "o"))
+	(def m_configs [begin_config errase_config])
+	(def machine (create_machine m_configs))
+	(def initial_tape (create_tape))
+	
+	(def complete_config_after_execute (execute machine initial_tape 5))
+	(is (= 2 (:cursor (:machine complete_config_after_execute))))
+	(def tape_after_execute (:tape complete_config_after_execute))	
+	(is (= "" (read_square tape_after_execute 2)))
+	(is (= "0" (read_square tape_after_execute 4)))
+)
+
+(deftest should_support_any_symbol_in_one_config
+	(def begin_config (create_m_config "b" "" "Pe, R, Pe, R, P0, R, R, P0, L, L" "o"))
+	(def move_config (create_m_config "o" "ANY" "R" "o"))
+	(def m_configs [begin_config move_config])
+	(def machine (create_machine m_configs))
+	(def initial_tape (create_tape))
+	
+	(def complete_config_after_execute (execute machine initial_tape 5))
+	(is (= 3 (:cursor (:machine complete_config_after_execute))))	
+)
+
+(deftest should_support_config_doing_nothing
+	(def begin_config (create_m_config "b" "" "Pe, R, Pe, R, P0, R, R, P0, L, L" "emp"))
+	(def empty_config (create_m_config "emp" "ANY" " " "o"))
+	(def errase_config (create_m_config "o" "0" "E" "o"))
+	(def m_configs [begin_config empty_config errase_config])
+	(def machine (create_machine m_configs))
+	(def initial_tape (create_tape))
+	
+	(def complete_config_after_execute (execute machine initial_tape 5))
+	(is (= 2 (:cursor (:machine complete_config_after_execute))))
+	(def tape_after_execute (:tape complete_config_after_execute))	
+	(is (= "" (read_square tape_after_execute 2)))
+	(is (= "0" (read_square tape_after_execute 4)))
+)

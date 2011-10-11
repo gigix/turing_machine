@@ -1,0 +1,13 @@
+; This machine calculates a irrational number 
+; which form is 0.01011011101111011111...
+
+b |   	| Pe, R, Pe, R, P0, R, R, P0, L, L 	| o
+o | 1 	| R, Px, L, L, L 					| o
+o | 0 	|  									| q
+q | ANY | R, R 								| q
+q |   	| P1, L 							| p
+p | x 	| E, R 								| q
+p | e 	| R 								| f
+p |   	| L, L 								| p
+f | ANY | R, R 								| f
+f |   	| P0, L, L 							| o

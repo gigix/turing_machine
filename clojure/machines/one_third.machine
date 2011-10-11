@@ -1,2 +1,4 @@
+;This machine calculates 1/3 (0.0101010101...)
+
 print-0 |  | P0,R | print-1
 print-1 |  | P1,R | print-0

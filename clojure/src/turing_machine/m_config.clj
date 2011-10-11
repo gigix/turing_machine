@@ -12,7 +12,16 @@
 	(first
 		(filter
 			(fn [m_config] 
-				(and (= status (:status m_config)) (= current_square_content (:read_symbol m_config)))
+				(and 
+					(= status (:status m_config)) 
+					(or 
+						(= current_square_content (:read_symbol m_config))
+						(and 
+							(not (empty? current_square_content))
+							(= "ANY" (:read_symbol m_config))
+						)
+					)
+				)
 			)
 			m_configs
 		)

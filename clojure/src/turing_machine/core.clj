@@ -47,7 +47,10 @@
 	(def tape_after_step 
 		(if (= "P" (str (first operation)))
 			(write_square tape current_cursor (str (last operation)))
-			tape
+			(if (= "E" operation)
+				(write_square tape current_cursor "")
+				tape
+			)
 		)
 	)
 	
