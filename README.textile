@@ -1,4 +1,4 @@
-This project is about creating implementations of "Turing Machine":http://en.wikipedia.org/wiki/Turing_machine as described in Alan Turing's famous paper " "On Computable Numbers, With An Application To The Entscheidungsproblem":http://l3d.cs.colorado.edu/~ctg/classes/lib/canon/turing-compnum.pdf ". 
+This project is about implementing "Turing Machine":http://en.wikipedia.org/wiki/Turing_machine as described in Alan Turing's famous paper " "On Computable Numbers, With An Application To The Entscheidungsproblem":http://l3d.cs.colorado.edu/~ctg/classes/lib/canon/turing-compnum.pdf ". 
 
 _(Note: Charles Petzold's book "The Annotated Turing":http://book.douban.com/subject/2330016/ is a good point to understand Turing's paper.)_
 
