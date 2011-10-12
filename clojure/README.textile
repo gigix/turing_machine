@@ -1,0 +1,39 @@
+h2. Get Started
+
+First of all, you need clone the codebase from GitHub:
+
+<blockquote>$ git clone git://github.com/gigix/turing_machine.git</blockquote>
+
+In order to build it, you also need install "Leiningen":http://github.com/technomancy/leiningen -- which is pretty easy on my MacBook Pro with MacPorts:
+
+<blockquote>$ sudo port install leiningen</blockquote>
+
+Now you can build the codebase and see if everything works:
+
+<blockquote>$ cd turing_machine/clojure && ./build.sh</blockquote>
+
+You should see <code>turing_machine-1.0.0-SNAPSHOT-standalone.jar</code> being packaged, as well as a "tape" being printed as following:
+
+<blockquote>(0 | 1 | 0 | 1 | 0 | 1 | 0 | 1 | 0 | 1)</blockquote>
+
+That's the binary form of rational number 1/3 (0.010101...). You just executed a Turing Machine which calculates 1/3 and prints the result to a tape -- actually we only calculate and display the starting 10 squares of the tape, because it's simply impossible to finish the calculation, because it's infinite.
+
+h2. Calculate An Irrational Number
+
+There's another machine lays in <code>machines/an_irrational_number.machine</code>, which calculates an irrational number with following form:
+
+<blockquote>0.01011011101111011111...</blockquote>
+
+You can run this machine with following instruction -- the algorithm is more complicated, so you have to run more steps to see a reasonable shape:
+
+<blockquote>$ java -jar turing_machine-1.0.0-SNAPSHOT-standalone.jar machines/an_irrational_number.machine 1000</blockquote>
+
+The starting part of the tape looks like following:
+
+<img src='http://gigix.thoughtworkers.org/assets/2011/10/12/irrational_number.png' width='450px' />
+
+And here's the "source code" (formal name should be "m-configurations", in which "m" stands for "machine") of this machine, which I will explain in more detail in next section:
+
+!http://gigix.thoughtworkers.org/assets/2011/10/12/source_of_irrational_number_1.png!
+
+_(To be continued...)_

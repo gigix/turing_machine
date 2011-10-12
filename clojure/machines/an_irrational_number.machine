@@ -1,4 +1,4 @@
-; This machine calculates a irrational number 
+; This machine calculates an irrational number 
 ; which form is 0.01011011101111011111...
 
 b |   	| Pe, R, Pe, R, P0, R, R, P0, L, L 	| o
