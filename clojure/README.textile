@@ -10,7 +10,7 @@ In order to build it, you also need install "Leiningen":http://github.com/techno
 
 Now you can build the codebase and see if everything works:
 
-<blockquote>$ cd turing_machine/clojure && ./build.sh</blockquote>
+<blockquote>$ cd turing_machine/clojure/domain && ./build.sh</blockquote>
 
 You should see <code>turing_machine-1.0.0-SNAPSHOT-standalone.jar</code> being packaged, as well as a "tape" being printed as following:
 
