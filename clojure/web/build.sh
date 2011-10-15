@@ -1,0 +1,2 @@
+lein test && \
+lein install

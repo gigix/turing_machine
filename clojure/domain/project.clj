@@ -1,4 +1,4 @@
-(defproject turing_machine "1.0.0-SNAPSHOT"
+(defproject turing-machine "1.0.0-SNAPSHOT"
   	:description "A Turing Machine (as described in Turing's famous essay)"
   	:dependencies [
 		[org.clojure/clojure "1.2.1"]
