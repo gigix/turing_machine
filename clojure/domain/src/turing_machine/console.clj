@@ -7,12 +7,17 @@
 )
 
 (defn execute_machine
-	[file_path steps]
-	(def machine (load_machine file_path))
+	[machine_description steps]
+	(def machine (load_machine machine_description))
 	(def initial_tape (create_tape))
 
 	(def complete_config_after_execute (execute machine initial_tape steps))
-	(print_tape (:tape complete_config_after_execute) steps)
+	(truncate_tape (:tape complete_config_after_execute) steps)
+)
+
+(defn execute_machine_from_file
+	[file_path steps]
+	(println (execute_machine (slurp file_path)))
 )
 
 (defn -main 

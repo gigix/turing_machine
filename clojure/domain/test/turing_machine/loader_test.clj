@@ -6,7 +6,7 @@
 )
 
 (deftest should_load_machine_from_file
-	(def machine (load_machine "machines/one_third.machine"))
+	(def machine (load_machine (slurp "machines/one_third.machine")))
 	(def initial_tape (create_tape))
 	
 	(def complete_config_after_execute (execute machine initial_tape 5))

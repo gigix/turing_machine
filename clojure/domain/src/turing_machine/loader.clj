@@ -17,9 +17,8 @@
 )
 
 (defn load_machine
-	[file_path]
-	(def file_content (slurp file_path))
-	(def rows (#'clojure.string/split file_content #"\n"))
+	[machine_description]
+	(def rows (#'clojure.string/split machine_description #"\n"))
 	(def useful_rows 
 		(filter 
 			(fn [raw_row] 

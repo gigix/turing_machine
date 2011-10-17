@@ -7,10 +7,15 @@
 	(map #(if (empty? %) " " %) squares)
 )
 
+(defn truncate_tape
+	[tape length]
+	(interpose "|" (pad_squares (take length (:squares tape))))
+)
+
 (defn print_tape
 	[tape length]
 	(println)
-	(println (interpose "|" (pad_squares (take length (:squares tape)))))
+	(println (truncate_tape tape length))
 )
 
 (defn create_tape
