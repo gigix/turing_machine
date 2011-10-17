@@ -36,4 +36,36 @@ And here's the "source code" (formal name should be "m-configurations", in which
 
 !http://gigix.thoughtworkers.org/assets/2011/10/12/source_of_irrational_number_1.png!
 
-_(To be continued...)_
+h2. Write Your Own Machine
+
+File <code>machines/an_irrational_number.machine</code> includes all the fundamental elements to create your own Turing Machine. 
+
+* The lines start with semicolons are comments.
+* Non-comment non-empty lines are m-configurations, each of them consists of 4 columns (separated by vertical lines), which in turn are:
+** Name of current m-configuration.
+** The symbol read from current square of the tape -- m-configurations with same name could behave differently while reading different symbols.
+** Operations, separated by commas. Valid operations are:
+*** P{x}: Write {x} to current square of the tape.
+*** E: Erase any symbol in current square.
+*** L/R: move the cursor one square left/right.
+** Next m-configuration -- what should be done after current m-configuration?
+
+Now, try to write your own machine, and run it!
+
+h2. What's Next?
+
+"Universal Turing Machine":http://en.wikipedia.org/wiki/Universal_turing_machine , of course. (What else otherwise?)
+
+(It requires reading Chapter 7 and 9 of "The Annotated Turing":http://book.douban.com/subject/2330016/ . Although I haven't started yet, I can feel it's not an easy task. Any contribution would be highly appreciated.)
+
+Meanwhile, I started building a web UI running Turing Machines with "Compojure":http://github.com/weavejester/compojure . Take a look at <code>web</code> folder. You can trial it with:
+
+<blockquote>$ lein ring server</blockquote>
+
+It also makes sense to tidy it up and make it more interactive.
+
+I also want to build an iOS application...but that's another story.
+
+You might want to try something more interesting, e.g. to write a general Turing Machine to determine any given Turing Machine would halt or not; to solve the "Entscheidungsproblem":http://en.wikipedia.org/wiki/Entscheidungsproblem ; etc.
+
+Anyway, enjoy :D
