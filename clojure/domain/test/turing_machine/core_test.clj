@@ -109,7 +109,7 @@
 	(def initial_tape (create_tape))
 	
 	(def complete_config_after_execute (execute machine initial_tape 5))
-	(is (= 3 (:cursor (:machine complete_config_after_execute))))	
+	(is (= 6 (:cursor (:machine complete_config_after_execute))))	
 )
 
 (deftest should_support_config_doing_nothing

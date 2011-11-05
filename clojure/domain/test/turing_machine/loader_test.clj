@@ -19,3 +19,14 @@
 	(is (= "0" (read_square tape_after_execute 4)))
 	(is (= "" (read_square tape_after_execute 5)))
 )
+
+(deftest should_load_and_execute_machine_starts_with_any_squar
+	(def machine (load_machine (slurp "machines/sample.machine")))
+	(def initial_tape (create_tape))
+	
+	(def complete_config_after_execute (execute machine initial_tape 5))
+	(def tape_after_execute (:tape complete_config_after_execute))
+	
+	(is (= "" (read_square tape_after_execute 0)))
+	(is (= "0" (read_square tape_after_execute 1)))
+)
