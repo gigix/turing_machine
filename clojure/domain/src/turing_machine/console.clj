@@ -6,10 +6,15 @@
 	(:gen-class)
 )
 
+(defn execute_machine_with_tape_and_cursor
+	[machine_description steps initial_tape initial_cursor]
+	(def machine (update_cursor (load_machine machine_description) initial_cursor))
+	(execute machine initial_tape steps)
+)
+
 (defn execute_machine_with_tape
 	[machine_description steps initial_tape]
-	(def machine (load_machine machine_description))
-	(execute machine initial_tape steps)
+	(execute_machine_with_tape_and_cursor machine_description steps initial_tape 0)
 )
 
 (defn execute_machine
